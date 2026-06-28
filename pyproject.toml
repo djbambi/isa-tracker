@@ -1,0 +1,62 @@
+[project]
+name = "iss-tracker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "David Bambrough", email = "djbambrough@mac.com" }
+]
+requires-python = ">=3.12.0"
+dependencies = []
+
+[project.scripts]
+iss-tracker = "iss_tracker:main"
+
+[build-system]
+requires = ["uv_build>=0.10.7,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.20",
+]
+
+# -------------------------
+# Ruff (linting + formatting)
+# -------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+# Tight but not noisy: correctness, imports, bugs, upgrades.
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# -------------------------
+# Pytest
+# -------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "slow: slow tests",
+]
+
+# -------------------------
+# MyPy
+# -------------------------
+[tool.mypy]
+python_version = "3.12"
+strict = true
+explicit_package_bases = true
+warn_return_any = true
+show_error_codes = true
+pretty = true
