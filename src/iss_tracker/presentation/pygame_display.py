@@ -1,6 +1,6 @@
 import pygame
 
-from iss_tracker.adapters.fake_iss import get_screen_data
+from iss_tracker.adapters.open_notify import get_screen_data
 
 def run() -> None:
 
